@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementación ISO 9001, 14001, 45001, 27001 | ProCert International LATAM</title>
+    <meta name="description" content="Implementamos tu Sistema ISO con mínima carga y te acompañamos hasta la certificación. Plan de acción en 24 h. Habla con un consultor ahora.">
+    <meta property="og:title" content="Implementación ISO Rápida | ProCert International">
+    <meta property="og:description" content="Implementamos tu Sistema ISO con mínima carga y te acompañamos hasta la certificación. Plan de acción en 24 h.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=630&q=80">
+    <meta property="og:url" content="https://procertinternational.org">
+    <meta property="og:locale" content="es_LA">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://procertinternational.org">
+    <style>
+        /* Variables y estilos base */
+        :root {
+            --azul: #0a2f5a;
+            --dorado: #f7b500;
+            --blanco: #ffffff;
+            --gris-claro: #f5f7fa;
+            --gris-medio: #e2e8f0;
+            --gris-oscuro: #64748b;
+            --negro: #1e293b;
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transicion: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--negro);
+            background-color: var(--blanco);
+            overflow-x: hidden;
+        }
+        
+        .contenedor {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Tipografía */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--azul);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--dorado);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Enlaces y botones */
+        a {
+            color: var(--azul);
+            text-decoration: none;
+            transition: var(--transicion);
+        }
+        
+        a:hover {
+            color: var(--dorado);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transicion);
+            border: none;
+        }
+        
+        .btn-primario {
+            background-color: var(--dorado);
+            color: var(--azul);
+        }
+        
+        .btn-primario:hover {
+            background-color: var(--azul);
+            color: var(--blanco);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secundario {
+            background-color: transparent;
+            color: var(--azul);
+            border: 2px solid var(--azul);
+        }
+        
+        .btn-secundario:hover {
+            background-color: var(--azul);
+            color: var(--blanco);
+            transform: translateY(-2px);
+        }
+        
+        /* Navegación */
+        .navegacion {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--blanco);
+            box-shadow: var(--sombra);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .navegacion .contenedor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul);
+        }
+        
+        .logo span {
+            color: var(--dorado);
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .menu a {
+            font-weight: 600;
+        }
+        
+        .menu-mobile {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            background: linear-gradient(135deg, rgba(10, 47, 90, 0.9) 0%, rgba(10, 47, 90, 0.8) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f7b500" width="50" height="50"/><rect fill="%230a2f5a" x="50" width="50" height="50"/><rect fill="%230a2f5a" y="50" width="50" height="50"/><rect fill="%23f7b500" x="50" y="50" width="50" height="50"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--blanco);
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--blanco);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .hero-bullets {
+            margin: 2rem 0;
+        }
+        
+        .hero-bullets li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-bullets li::before {
+            content: '✓';
+            color: var(--dorado);
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .hero-nota {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        .risk-note {
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            color: var(--dorado);
+        }
+        
+        /* Secciones generales */
+        .seccion {
+            padding: 5rem 0;
+        }
+        
+        .seccion-clara {
+            background-color: var(--blanco);
+        }
+        
+        .seccion-oscura {
+            background-color: var(--gris-claro);
+        }
+        
+        .encabezado-seccion {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .encabezado-seccion h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Servicios */
+        .servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .servicio {
+            background-color: var(--blanco);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            border-top: 4px solid var(--dorado);
+            text-align: center;
+        }
+        
+        .servicio:hover {
+            transform: translateY(-5px);
+        }
+        
+        .servicio h3 {
+            color: var(--azul);
+            margin-bottom: 1rem;
+        }
+        
+        .servicio-icono {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dorado);
+        }
+        
+        /* Proceso */
+        .proceso {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            margin: 3rem 0;
+        }
+        
+        .proceso::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30px;
+            height: 100%;
+            width: 4px;
+            background-color: var(--dorado);
+            z-index: 1;
+        }
+        
+        .paso {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .numero-paso {
+            background-color: var(--dorado);
+            color: var(--azul);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .contenido-paso {
+            background-color: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            flex: 1;
+        }
+        
+        .paso-plazo {
+            display: inline-block;
+            background-color: var(--gris-claro);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--azul);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Casos de éxito */
+        .casos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .caso {
+            background-color: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+        
+        .caso:hover {
+            transform: translateY(-5px);
+        }
+        
+        .caso-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .caso-norma {
+            font-weight: 600;
+            color: var(--azul);
+        }
+        
+        .caso-plazo {
+            background-color: var(--gris-claro);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--azul);
+        }
+        
+        .caso-metrica {
+            font-weight: 700;
+            color: var(--dorado);
+            margin: 0.5rem 0;
+        }
+        
+        .logo-cliente {
+            height: 60px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-cliente img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .aviso-legal {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--gris-medio);
+            border-radius: 4px;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        
+        /* Testimonios */
+        .testimonios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonio {
+            background-color: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            position: relative;
+        }
+        
+        .testimonio-texto {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonio-texto::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--dorado);
+            position: absolute;
+            left: -1rem;
+            top: -1rem;
+            opacity: 0.3;
+            line-height: 1;
+        }
+        
+        .testimonio-autor {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonio-info {
+            margin-left: 1rem;
+        }
+        
+        .testimonio-nombre {
+            font-weight: 700;
+            color: var(--azul);
+        }
+        
+        .testimonio-cargo {
+            font-size: 0.875rem;
+            color: var(--gris-oscuro);
+        }
+        
+        /* Oferta */
+        .oferta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--azul) 0%, #0c3a6d 100%);
+            color: var(--blanco);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        
+        .oferta h2 {
+            color: var(--blanco);
+        }
+        
+        .oferta h2::after {
+            display: none;
+        }
+        
+        .oferta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Formulario */
+        .formulario-container {
+            background-color: var(--blanco);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .formulario-progreso {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .formulario-progreso::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--gris-medio);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .progreso-paso {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--gris-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progreso-paso.activo {
+            background-color: var(--dorado);
+            color: var(--azul);
+        }
+        
+        .campo-formulario {
+            margin-bottom: 1.5rem;
+        }
+        
+        .campo-formulario label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .campo-formulario input,
+        .campo-formulario select,
+        .campo-formulario textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gris-medio);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: inherit;
+        }
+        
+        .campo-formulario input:focus,
+        .campo-formulario select:focus,
+        .campo-formulario textarea:focus {
+            outline: none;
+            border-color: var(--dorado);
+            box-shadow: 0 0 0 3px rgba(247, 181, 0, 0.2);
+        }
+        
+        .campo-honeypot {
+            position: absolute;
+            left: -5000px;
+        }
+        
+        .checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .checkbox input {
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+        
+        .formulario-botones {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.activo {
+            display: block;
+        }
+        
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pregunta {
+            margin-bottom: 1rem;
+            border: 1px solid var(--gris-medio);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .pregunta-titulo {
+            padding: 1rem;
+            background-color: var(--gris-claro);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .pregunta-contenido {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .pregunta.activa .pregunta-contenido {
+            max-height: 500px;
+            padding: 1rem;
+        }
+        
+        .pregunta.activa .icono-pregunta::before {
+            content: '-';
+        }
+        
+        /* WhatsApp flotante */
+        .whatsapp-flotante {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-size: 1.5rem;
+            box-shadow: var(--sombra);
+            z-index: 999;
+            transition: var(--transicion);
+        }
+        
+        .whatsapp-flotante:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--azul);
+            color: var(--blanco);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer a {
+            color: var(--blanco);
+        }
+        
+        .footer a:hover {
+            color: var(--dorado);
+        }
+        
+        .footer-contenido {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info h3 {
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-info p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-redes {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        
+        /* Barra adhesiva para móviles */
+        .barra-mobile {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--blanco);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem;
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 900;
+        }
+        
+        .barra-mobile a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--azul);
+        }
+        
+        .barra-mobile a i {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .menu {
+                display: none;
+            }
+            
+            .menu-mobile {
+                display: block;
+            }
+            
+            .hero-ctas {
+                flex-direction: column;
+            }
+            
+            .hero-ctas .btn {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .seccion {
+                padding: 3rem 0;
+            }
+            
+            .barra-mobile {
+                display: flex;
+            }
+            
+            .proceso::before {
+                left: 25px;
+            }
+            
+            .numero-paso {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .formulario-botones {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+            
+            .servicios,
+            .casos,
+            .testimonios {
+                grid-template-columns: 1fr;
+            }
+            
+            .paso {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .proceso::before {
+                left: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navegacion">
+        
+<div class="contenedor"> <img src="Foto/log.png" width="64" height="66"> 
+  <ul class="menu">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#casos">Casos de éxito</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#form">Contacto</a></li>
+            </ul>
+            <div class="menu-mobile">☰</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="contenedor">
+            <h1>Implementamos tu Sistema ISO y te acompañamos hasta la certificación</h1>
+            <p>Metodología ágil, mínima carga para tu equipo y resultados medibles (promedio 8 semanas*).</p>
+            <p class="hero-nota">*El plazo varía según sector, alcance y punto de partida.</p>
+            
+            <ul class="hero-bullets">
+                <li>Plan de acción en 24 h</li>
+                <li>Plantillas y procedimientos listos para usar</li>
+                <li>Acompañamiento a auditoría externa</li>
+                <li>Soporte remoto y presencial</li>
+            </ul>
+            
+            <div class="hero-ctas">
+                <a href="#form" class="btn btn-primario" id="cta-hero">Quiero mi plan en 24 h</a>
+                <a href="https://wa.me/595985899217?utm_source=landing&utm_medium=whatsapp&utm_campaign=lead_iso&text=Hola%20ProCert%2C%20quiero%20mi%20plan%20de%20acción%20en%2024%20h" class="btn btn-secundario" target="_blank">Hablar por WhatsApp</a>
+            </div>
+            
+            <p class="risk-note">Respuesta en &lt;24 h. Sin compromiso.</p>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="seccion seccion-clara">
+        <div class="contenedor">
+            <div class="encabezado-seccion">
+                <h2>¿Qué implementamos?</h2>
+            </div>
+            <div class="servicios">
+                <div class="servicio">
+                    <div class="servicio-icono">✓</div>
+                    <h3>ISO 9001 (Calidad)</h3>
+                    <p>Estandariza procesos, reduce retrabajos y mejora satisfacción del cliente.</p>
+                </div>
+                <div class="servicio">
+                    <div class="servicio-icono">✓</div>
+                    <h3>ISO 14001 (Medio Ambiente)</h3>
+                    <p>Gestión ambiental efectiva, reducción de costos y riesgos regulatorios.</p>
+                </div>
+                <div class="servicio">
+                    <div class="servicio-icono">✓</div>
+                    <h3>ISO 45001 (Seguridad y Salud)</h3>
+                    <p>Menos incidentes, mejor clima laboral y cumplimiento normativo.</p>
+                </div>
+                <div class="servicio">
+                    <div class="servicio-icono">✓</div>
+                    <h3>ISO 27001 (Seguridad de la Información)</h3>
+                    <p>Protección de datos, gestión de riesgos y confianza de clientes.</p>
+                </div>
+                <div class="servicio">
+                    <div class="servicio-icono">✓</div>
+                    <h3>ISO 37001 (Antisoborno)</h3>
+                    <p>Prevención de sobornos, integridad empresarial y cumplimiento legal.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem;"><strong>Otras normas: consúltanos</strong></p>
+        </div>
+    </section>
+
+    <!-- Proceso -->
+    <section id="proceso" class="seccion seccion-oscura">
+        <div class="contenedor">
+            <div class="encabezado-seccion">
+                <h2>Nuestro proceso en 3 pasos</h2>
+            </div>
+            <div class="proceso">
+                <div class="paso">
+                    <div class="numero-paso">1</div>
+                    <div class="contenido-paso">
+                        <span class="paso-plazo">Día 1-2</span>
+                        <h3>Diagnóstico express</h3>
+                        <p>Realizamos un análisis de brechas (gap analysis), desarrollamos un cronograma detallado y un roadmap de entregables para tu implementación.</p>
+                    </div>
+                </div>
+                <div class="paso">
+                    <div class="numero-paso">2</div>
+                    <div class="contenido-paso">
+                        <span class="paso-plazo">Semanas 1-6</span>
+                        <h3>Implementación</h3>
+                        <p>Talleres participativos, desarrollo de documentos, formación del equipo y simulación de auditoría para prepararte completamente.</p>
+                    </div>
+                </div>
+                <div class="paso">
+                    <div class="numero-paso">3</div>
+                    <div class="contenido-paso">
+                        <span class="paso-plazo">Semanas 7-8</span>
+                        <h3>Cierre y acompañamiento</h3>
+                        <p>Auditoría interna, plan de acciones correctivas y coaching especializado para la auditoría externa de certificación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de éxito -->
+    <section id="casos" class="seccion seccion-clara">
+        <div class="contenedor">
+            <div class="encabezado-seccion">
+                <h2>Casos de éxito</h2>
+            </div>
+            <div class="casos">
+                <div class="caso">
+                    <div class="caso-header">
+                        <span class="caso-norma">ISO 22000</span>
+                        <span class="caso-plazo">10 semanas</span>
+                    </div>
+                    <p class="caso-metrica">−32% no conformidades mayores en auditoría</p>
+                    <p>Empresa del sector alimentos con 85 empleados. Implementación completa del sistema de inocuidad alimentaria.</p>
+                </div>
+                <div class="caso">
+                    <div class="caso-header">
+                        <span class="caso-norma">ISO 9001</span>
+                        <span class="caso-plazo">8 semanas</span>
+                    </div>
+                    <p class="caso-metrica">+15% satisfacción del cliente</p>
+                    <p>Compañía de servicios con 45 empleados. Estandarización de procesos y mejora en la calidad del servicio.</p>
+                </div>
+                <div class="caso">
+                    <div class="caso-header">
+                        <span class="caso-norma">ISO 45001</span>
+                        <span class="caso-plazo">9 semanas</span>
+                    </div>
+                    <p class="caso-metrica">−45% incidentes menores</p>
+                    <p>Empresa manufacturera con 120 empleados. Implementación del sistema de seguridad y salud en el trabajo.</p>
+                </div>
+            </div>
+            <div class="aviso-legal">
+                Las marcas exhibidas pertenecen a sus respectivos propietarios. Su uso no implica patrocinio ni afiliación con organismos de acreditación/certificación.
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="seccion seccion-oscura">
+        <div class="contenedor">
+            <div class="encabezado-seccion">
+                <h2>Testimonios</h2>
+            </div>
+            <div class="testimonios">
+                <div class="testimonio">
+                    <div class="testimonio-texto">
+                        La implementación fue ágil y el equipo terminó con claridad de roles y KPIs. El acompañamiento durante la auditoría externa fue fundamental para nuestro éxito.
+                    </div>
+                    <div class="testimonio-autor">
+                        <div class="testimonio-info">
+                            <div class="testimonio-nombre">María González</div>
+                            <div class="testimonio-cargo">Gerente de Calidad en Alimentos del Sur</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio">
+                    <div class="testimonio-texto">
+                        Logramos la certificación en tiempo récord con mínima carga para nuestro equipo. Los consultores de ProCert fueron sumamente profesionales y accesibles.
+                    </div>
+                    <div class="testimonio-autor">
+                        <div class="testimonio-info">
+                            <div class="testimonio-nombre">Carlos Mendoza</div>
+                            <div class="testimonio-cargo">Dueño en Manufacturas Precision</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio">
+                    <div class="testimonio-texto">
+                        El plan de acción en 24 horas nos dio claridad inmediata sobre el proceso. La metodología práctica nos permitió implementar sin interrumpir operaciones.
+                    </div>
+                    <div class="testimonio-autor">
+                        <div class="testimonio-info">
+                            <div class="testimonio-nombre">Ana López</div>
+                            <div class="testimonio-cargo">Directora de Operaciones en Servicios Integrados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oferta -->
+    <section class="seccion seccion-clara">
+        <div class="contenedor">
+            <div class="oferta">
+                <h2>Diagnóstico express gratuito</h2>
+                <p>Obtén un análisis de brechas de 30 minutos y un plan de acción personalizado en 24 horas</p>
+                <a href="#form" class="btn btn-primario">Solicitar diagnóstico</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario -->
+    <section id="form" class="seccion seccion-oscura">
+        <div class="contenedor">
+            <div class="encabezado-seccion">
+                <h2>Contacto</h2>
+                <p>Completa el formulario y te enviaremos tu plan de acción en 24 horas</p>
+            </div>
+            
+            <div class="formulario-container">
+                <div class="formulario-progreso">
+                    <div class="progreso-paso activo">1</div>
+                    <div class="progreso-paso">2</div>
+                </div>
+                
+                <form id="formulario-contacto" class="lead-form" novalidate>
+                    <!-- Etapa 1 -->
+                    <div class="form-step activo" id="step-1">
+                        <div class="campo-formulario">
+                            <label for="nombre">Nombre y Apellido *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <label for="empresa">Empresa *</label>
+                            <input type="text" id="empresa" name="empresa" required>
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <label for="whatsapp">WhatsApp *</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+595 9xx xxx xxx">
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <label for="norma">Norma de interés *</label>
+                            <select id="norma" name="norma" required>
+                                <option value="">Selecciona…</option>
+                                <option value="ISO 9001">ISO 9001</option>
+                                <option value="ISO 14001">ISO 14001</option>
+                                <option value="ISO 45001">ISO 45001</option>
+                                <option value="ISO 27001">ISO 27001</option>
+                                <option value="ISO 37001">ISO 37001</option>
+                                <option value="Otra">Otra</option>
+                            </select>
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <label for="pais">País *</label>
+                            <input type="text" id="pais" name="pais" value="Paraguay" required>
+                        </div>
+                        
+                        <div class="campo-honeypot">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website">
+                        </div>
+                        
+                        <div class="formulario-botones">
+                            <button type="button" class="btn btn-primario" id="next-step">Continuar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Etapa 2 -->
+                    <div class="form-step" id="step-2">
+                        <div class="campo-formulario">
+                            <label for="sector">Industria/Sector *</label>
+                            <select id="sector" name="sector" required>
+                                <option value="">Selecciona…</option>
+                                <option value="Manufactura">Manufactura</option>
+                                <option value="Alimentos">Alimentos</option>
+                                <option value="Servicios">Servicios</option>
+                                <option value="Tecnología">Tecnología</option>
+                                <option value="Salud">Salud</option>
+                                <option value="Construcción">Construcción</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <label for="tamano">Tamaño de la empresa *</label>
+                            <select id="tamano" name="tamano" required>
+                                <option value="">Selecciona…</option>
+                                <option value="1-10">1-10 empleados</option>
+                                <option value="11-50">11-50 empleados</option>
+                                <option value="51-200">51-200 empleados</option>
+                                <option value="201+">Más de 200 empleados</option>
+                            </select>
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <label for="urgencia">Quiero certificar en: *</label>
+                            <select id="urgencia" name="urgencia" required>
+                                <option value="">Selecciona…</option>
+                                <option value="<3 meses">Menos de 3 meses</option>
+                                <option value="3-6 meses">3-6 meses</option>
+                                <option value=">6 meses">Más de 6 meses</option>
+                            </select>
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <label for="comentarios">Comentarios</label>
+                            <textarea id="comentarios" name="comentarios" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="campo-formulario">
+                            <div class="checkbox">
+                                <input type="checkbox" id="privacidad" name="privacidad" required>
+                                <label for="privacidad">Acepto la Política de Privacidad y el contacto por WhatsApp/Email.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="formulario-botones">
+                            <button type="button" class="btn btn-secundario" id="prev-step">Atrás</button>
+                            <button type="submit" class="btn btn-primario">Recibir mi plan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="seccion seccion-clara">
+        <div class="contenedor">
+            <div class="encabezado-seccion">
+                <h2>Preguntas frecuentes</h2>
+            </div>
+            <div class="faq-container">
+                <div class="pregunta">
+                    <div class="pregunta-titulo">
+                        <span>¿Quién emite el certificado?</span>
+                        <span class="icono-pregunta">+</span>
+                    </div>
+                    <div class="pregunta-contenido">
+                        <p>Un organismo de certificación acreditado externo. Nosotros implementamos y te acompañamos en todo el proceso hasta la certificación.</p>
+                    </div>
+                </div>
+                <div class="pregunta">
+                    <div class="pregunta-titulo">
+                        <span>¿Qué no incluye?</span>
+                        <span class="icono-pregunta">+</span>
+                    </div>
+                    <div class="pregunta-contenido">
+                        <p>Tasas del organismo certificador, calibraciones externas y adecuaciones de infraestructura mayor.</p>
+                    </div>
+                </div>
+                <div class="pregunta">
+                    <div class="pregunta-titulo">
+                        <span>¿Modalidad de trabajo?</span>
+                        <span class="icono-pregunta">+</span>
+                    </div>
+                    <div class="pregunta-contenido">
+                        <p>Trabajamos online, presencial o híbrido según tus necesidades y ubicación.</p>
+                    </div>
+                </div>
+                <div class="pregunta">
+                    <div class="pregunta-titulo">
+                        <span>¿Plazo típico de implementación?</span>
+                        <span class="icono-pregunta">+</span>
+                    </div>
+                    <div class="pregunta-contenido">
+                        <p>Entre 6-10 semanas según el sector, alcance y punto de partida de tu organización.</p>
+                    </div>
+                </div>
+                <div class="pregunta">
+                    <div class="pregunta-titulo">
+                        <span>¿Ofrecen garantías?</span>
+                        <span class="icono-pregunta">+</span>
+                    </div>
+                    <div class="pregunta-contenido">
+                        <p>Garantizamos la calidad de nuestra implementación y acompañamiento. La decisión final de certificación corresponde al organismo externo.</p>
+                    </div>
+                </div>
+                <div class="pregunta">
+                    <div class="pregunta-titulo">
+                        <span>¿Qué recursos necesito asignar?</span>
+                        <span class="icono-pregunta">+</span>
+                    </div>
+                    <div class="pregunta-contenido">
+                        <p>Un referente interno y disponibilidad mínima para talleres y revisiones (2-5 horas semanales).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/595985899217?utm_source=landing&utm_medium=whatsapp&utm_campaign=lead_iso&text=Hola%20ProCert%2C%20quiero%20mi%20plan%20de%20acción%20en%2024%20h" class="whatsapp-flotante" target="_blank" id="wa-float">
+        <span>💬</span>
+    </a>
+
+    <!-- Barra móvil -->
+    <div class="barra-mobile">
+        <a href="#hero">
+            <span>🏠</span>
+            Inicio
+        </a>
+        <a href="#servicios">
+            <span>🔧</span>
+            Servicios
+        </a>
+        <a href="#casos">
+            <span>⭐</span>
+            Casos
+        </a>
+        <a href="#form">
+            <span>📞</span>
+            Contacto
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="footer-contenido">
+                <div class="footer-info">
+                    <h3>ProCert International</h3>
+                    <p>🌐 <a href="https://www.procertinternational.org" target="_blank">www.procertinternational.org</a></p>
+                    <p>📧 <a href="mailto:info@procertinternational.org">info@procertinternational.org</a></p>
+                    <p>📞 WhatsApp: <a href="https://wa.me/595985899217" target="_blank">+595 985 899217</a></p>
+                </div>
+                <div class="footer-info">
+                    <h3>Redes sociales</h3>
+                    <div class="footer-redes">
+                        <p>Facebook: <a href="https://www.facebook.com/profile.php?id=61577349989256" target="_blank">ProCert International</a></p>
+                        <p>Instagram: <a href="https://www.instagram.com/procert.international/" target="_blank">@procert.international</a></p>
+                        <p>LinkedIn: <a href="https://www.linkedin.com/company/procert-international/" target="_blank">ProCert International</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-legal">
+                <a href="https://www.procertinternational.org/politica-privacidad" target="_blank">Política de Privacidad</a>
+                <a href="https://www.procertinternational.org/terminos-servicio" target="_blank">Términos de Servicio</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ProCert International. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll suave para anclas
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Evento para GA4 según el tipo de CTA
+                    if (this.id === 'cta-hero') {
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'cta_hero_click', {
+                                'event_category': 'engagement',
+                                'event_label': 'Hero CTA Click'
+                            });
+                        }
+                    }
+                    
+                    // Scroll suave
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // FAQ acordeón
+        document.querySelectorAll('.pregunta-titulo').forEach(title => {
+            title.addEventListener('click', () => {
+                const pregunta = title.parentElement;
+                const isActive = pregunta.classList.contains('activa');
+                
+                // Cerrar todas las preguntas
+                document.querySelectorAll('.pregunta').forEach(p => {
+                    p.classList.remove('activa');
+                });
+                
+                // Abrir la pregunta clickeada si no estaba activa
+                if (!isActive) {
+                    pregunta.classList.add('activa');
+                    
+                    // Evento para GA4
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'faq_open', {
+                            'event_category': 'engagement',
+                            'event_label': title.textContent.trim()
+                        });
+                    }
+                } else {
+                    // Evento para GA4
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'faq_close', {
+                            'event_category': 'engagement',
+                            'event_label': title.textContent.trim()
+                        });
+                    }
+                }
+            });
+        });
+
+        // Formulario multi-pasos
+        const formulario = document.getElementById('formulario-contacto');
+        const nextButton = document.getElementById('next-step');
+        const prevButton = document.getElementById('prev-step');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const progresoPasos = document.querySelectorAll('.progreso-paso');
+        
+        // Evento de visualización del formulario
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_view', {
+                'event_category': 'engagement',
+                'event_label': 'Contact Form View'
+            });
+        }
+        
+        nextButton.addEventListener('click', function() {
+            // Validar campos de la primera etapa
+            const nombre = document.getElementById('nombre');
+            const empresa = document.getElementById('empresa');
+            const whatsapp = document.getElementById('whatsapp');
+            const norma = document.getElementById('norma');
+            
+            if (!nombre.value.trim()) {
+                alert('Por favor, ingresa tu nombre y apellido');
+                nombre.focus();
+                return;
+            }
+            
+            if (!empresa.value.trim()) {
+                alert('Por favor, ingresa el nombre de tu empresa');
+                empresa.focus();
+                return;
+            }
+            
+            if (!whatsapp.value.trim()) {
+                alert('Por favor, ingresa tu número de WhatsApp');
+                whatsapp.focus();
+                return;
+            }
+            
+            if (!norma.value) {
+                alert('Por favor, selecciona una norma de interés');
+                norma.focus();
+                return;
+            }
+            
+            // Evento para GA4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'select_norma', {
+                    'event_category': 'engagement',
+                    'event_label': norma.value
+                });
+            }
+            
+            // Avanzar a la siguiente etapa
+            step1.classList.remove('activo');
+            step2.classList.add('activo');
+            progresoPasos[0].classList.remove('activo');
+            progresoPasos[1].classList.add('activo');
+        });
+        
+        prevButton.addEventListener('click', function() {
+            // Regresar a la etapa anterior
+            step2.classList.remove('activo');
+            step1.classList.add('activo');
+            progresoPasos[1].classList.remove('activo');
+            progresoPasos[0].classList.add('activo');
+        });
+        
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validar checkbox de privacidad
+            const privacidad = document.getElementById('privacidad');
+            if (!privacidad.checked) {
+                alert('Debes aceptar la Política de Privacidad para continuar');
+                privacidad.focus();
+                return;
+            }
+            
+            // Obtener todos los valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const empresa = document.getElementById('empresa').value;
+            const whatsappValue = document.getElementById('whatsapp').value;
+            const norma = document.getElementById('norma').value;
+            const pais = document.getElementById('pais').value;
+            const sector = document.getElementById('sector').value;
+            const tamano = document.getElementById('tamano').value;
+            const urgencia = document.getElementById('urgencia').value;
+            const comentarios = document.getElementById('comentarios').value;
+            
+            // Construir el mensaje para WhatsApp
+            let mensaje = "Hola ProCert, estoy interesado en implementar ISO.\n\n";
+            mensaje += `*Nombre:* ${nombre}\n`;
+            mensaje += `*Empresa:* ${empresa}\n`;
+            mensaje += `*WhatsApp:* ${whatsappValue}\n`;
+            mensaje += `*Norma de interés:* ${norma}\n`;
+            mensaje += `*País:* ${pais}\n`;
+            mensaje += `*Sector:* ${sector}\n`;
+            mensaje += `*Tamaño de empresa:* ${tamano}\n`;
+            mensaje += `*Urgencia:* ${urgencia}\n`;
+            
+            if (comentarios) {
+                mensaje += `*Comentarios:* ${comentarios}\n`;
+            }
+            
+            mensaje += "\nMe gustaría recibir mi plan de acción en 24 horas.";
+            
+            // Codificar el mensaje para URL
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            
+            // Redirigir a WhatsApp
+            window.location.href = `https://wa.me/595985899217?text=${mensajeCodificado}`;
+            
+            // Evento para GA4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'generate_lead', {
+                    'event_category': 'conversion',
+                    'event_label': 'Form Submit'
+                });
+            }
+        });
+        
+        // Eventos para WhatsApp
+        document.getElementById('wa-float').addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click_whatsapp', {
+                    'event_category': 'engagement',
+                    'event_label': 'WhatsApp Float Click'
+                });
+                
+                // También podríamos enviar datos adicionales al dataLayer
+                if (typeof dataLayer !== 'undefined') {
+                    const norma = document.getElementById('norma').value || 'No especificada';
+                    const pais = document.getElementById('pais').value || 'No especificado';
+                    dataLayer.push({
+                        'event': 'click_whatsapp',
+                        'norma': norma,
+                        'pais': pais
+                    });
+                }
+            }
+        });
+
+        // Menu móvil
+        const menuMobile = document.querySelector('.menu-mobile');
+        const menu = document.querySelector('.menu');
+        
+        if (menuMobile && menu) {
+            menuMobile.addEventListener('click', function() {
+                menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+                menu.style.flexDirection = 'column';
+                menu.style.position = 'absolute';
+                menu.style.top = '100%';
+                menu.style.left = '0';
+                menu.style.right = '0';
+                menu.style.backgroundColor = 'var(--blanco)';
+                menu.style.padding = '1rem';
+                menu.style.gap = '1rem';
+            });
+        }
+
+        // Detectar scroll para evento de view_content
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY + window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollPercentage = (scrollPosition / documentHeight) * 100;
+            
+            if (scrollPercentage > 75 && !this.scroll75) {
+                this.scroll75 = true;
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'view_content', {
+                        'event_category': 'engagement',
+                        'event_label': 'Scroll 75%'
+                    });
+                }
+            }
+        });
+    </script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ProCert International",
+        "url": "https://www.procertinternational.org",
+        "logo": "https://www.procertinternational.org/logo.png",
+        "contactPoint": [{
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+595985899217",
+            "areaServed": "Latin America",
+            "availableLanguage": "Spanish"
+        }],
+        "sameAs": [
+            "https://www.facebook.com/profile.php?id=61577349989256",
+            "https://www.instagram.com/procert.international/",
+            "https://www.linkedin.com/company/procert-international/"
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Implementación de Sistemas ISO",
+        "provider": {
+            "@type": "Organization",
+            "name": "ProCert International"
+        },
+        "areaServed": "Latin America",
+        "description": "Implementamos tu Sistema ISO y te acompañamos hasta la certificación con un organismo acreditado externo.",
+        "serviceType": "Consultoría ISO"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Quién emite el certificado?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un organismo de certificación acreditado externo. Nosotros implementamos y te acompañamos en todo el proceso hasta la certificación."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué no incluye?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tasas del organismo certificador, calibraciones externas y adecuaciones de infraestructura mayor."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Modalidad de trabajo?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Trabajamos online, presencial o híbrido según tus necesidades y ubicación."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Plazo típico de implementación?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Entre 6-10 semanas según el sector, alcance y punto de partida de tu organización."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Ofrecen garantías?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Garantizamos la calidad de nuestra implementación y acompañamiento. La decisión final de certificación corresponde al organismo externo."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué recursos necesito asignar?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un referente interno y disponibilidad mínima para talleres y revisiones (2-5 horas semanales)."
+                }
+            }
+        ]
+    }
+    </script>
+</body>
+</html>
